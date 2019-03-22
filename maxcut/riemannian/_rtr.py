@@ -131,13 +131,11 @@ class RiemannianTrustRegion:
             if rho_k > self.rho_prime:
                 value_new, gradient, get_hessian = self._get_f_values(x_new)
                 x_k, value = x_new, value_new
-                last_accept = -1
                 self.__candidates.append(x_k)
                 # Check a stopping criterion on the gradient's norm.
                 if froebenius(gradient) < 1e-6:
                     stop_cause = "vanishing gradient"
                     break
-            last_accept += 1
         # Optionally print-out stopping cause.
         if verbose:
             print(stop_cause)
