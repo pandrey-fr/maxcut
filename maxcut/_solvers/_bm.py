@@ -63,7 +63,7 @@ class MaxCutBM(AbstractMaxCut):
         candidates = rtr.get_candidates(verbose)
         # Find and keep the best candidate.
         matrix, cut, value = self._get_best_candidate(candidates)
-        self.__results = {'matrix': matrix, 'cut': cut, 'value': value}
+        self._results = {'matrix': matrix, 'cut': cut, 'value': value}
         # Optionally be verbose about the results.
         if verbose:
             print(

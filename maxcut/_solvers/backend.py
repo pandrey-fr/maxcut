@@ -14,7 +14,7 @@ class AbstractMaxCut(metaclass=ABCMeta):
     def __init__(self, graph):
         """Instantiate the solver."""
         self.graph = graph
-        self.__results = None
+        self._results = None
 
     def get_results(self, item='cut', verbose=False):
         """Return the lazy-evaluated max-cut results reached.
@@ -22,14 +22,14 @@ class AbstractMaxCut(metaclass=ABCMeta):
         item : whether to return the 'cut' itself, its 'value'
                or the initial 'matrix' solving the SDP program
         """
-        if self.__results is None:
+        if self._results is None:
             self.solve(verbose)
-        if item not in self.__results:
-            valid = ', '.join(["'%s'" % key for key in self.__results.keys()])
+        if item not in self._results:
+            valid = ', '.join(["'%s'" % key for key in self._results.keys()])
             raise KeyError(
                 "In valid 'item' keyword: should be one of {{%s}}." % valid
             )
-        return self.__results.get(item)
+        return self._results.get(item)
 
     @abstractmethod
     def solve(self, verbose=True):

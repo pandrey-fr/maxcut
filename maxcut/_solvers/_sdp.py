@@ -63,7 +63,7 @@ class MaxCutSDP(AbstractMaxCut):
         cut = get_partition(vectors)
         # Get the value of the cut. Store results.
         value = get_cut_value(self.graph, cut)
-        self.__results = {'matrix': matrix, 'cut': cut, 'value': value}
+        self._results = {'matrix': matrix, 'cut': cut, 'value': value}
         # Optionally be verbose about the results.
         if verbose:
             print(
